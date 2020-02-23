@@ -85,8 +85,6 @@ namespace ElectronicObserver.Window
 
             Utility.Configuration.Instance.Load(this);
 
-			Utility.Configuration.Instance.Load(this);
-
 
             Utility.Logger.Instance.LogAdded += new Utility.LogAddedEventHandler((Utility.Logger.LogData data) =>
             {
@@ -150,7 +148,6 @@ namespace ElectronicObserver.Window
             StripMenu_Help_Version.Image = ResourceManager.Instance.Icons.Images[(int)ResourceManager.IconContent.AppIcon];
             #endregion
 
-            APIObserver.Instance.Start(Utility.Configuration.Config.Connection.Port, this);
 
             APIObserver.Instance.Start(Utility.Configuration.Config.Connection.Port, this);
             MainDockPanel.Theme = vS2015DarkTheme1;
