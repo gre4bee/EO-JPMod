@@ -61,6 +61,8 @@ namespace Browser.CefOp
 			{
 				return new Cef_ResRequestHandler();
 			}
+			if (request.Url.Contains("gadget_html5"))
+				return new GadgetUrlHandler();
 			return null;
 		}
 	}

@@ -10,24 +10,7 @@ namespace Browser.CefOp
 {
 	public class Cef_ResRequestHandler : ResourceRequestHandler
 	{
-		/**
-		bool pixiSettingEnabled;
-		public Cef_RequestHandler(bool pixiSettingEnabled) : base()
-		{
-			this.pixiSettingEnabled = pixiSettingEnabled;
-		}
-		/// <summary>
-		/// レスポンスの置換制御を行います。
-		/// </summary>
-		protected override IResponseFilter GetResourceResponseFilter(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, IResponse response)
-		{
-			bool pixiSettingEnabled = false;
-			if (pixiSettingEnabled && request.Url.Contains(@"/kcs2/index.php"))
-				return new ResponseFilterPixiSetting();
 
-			return base.GetResourceResponseFilter(chromiumWebBrowser, browser, frame, request, response);
-		}
-		**/
 		/// <summary>
 		/// 特定の通信をブロックします。
 		/// </summary>
@@ -47,8 +30,6 @@ namespace Browser.CefOp
 			}
 			return base.OnBeforeResourceLoad(chromiumWebBrowser, browser, frame, request, callback);
 		}
-
-
 
 	}
 }
