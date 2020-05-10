@@ -8,24 +8,14 @@ using CefSharp;
 
 namespace Browser.CefOp
 {
-	class Cef_RequestHandler : RequestHandler
-
+	public class CustomRequestHandler : RequestHandler
 	{
 
 		public delegate void RenderProcessTerminatedEventHandler(string message);
 		public event RenderProcessTerminatedEventHandler RenderProcessTerminated;
 
-		/// <summary>
-		/// 戻る/進む操作をブロックします。
-		/// </summary>
-		protected override bool OnBeforeBrowse(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, bool userGesture, bool isRedirect)
-		{
-			if ((request.TransitionType & TransitionType.ForwardBack) != 0)
-			{
-				return true;
-			}
-			return base.OnBeforeBrowse(chromiumWebBrowser, browser, frame, request, userGesture, isRedirect);
-		}
+
+
 
 		/// <summary>
 		/// 描画プロセスが何らかの理由で落ちた際の処理を行います。
@@ -59,7 +49,7 @@ namespace Browser.CefOp
 			//NOTE: In most cases you examine the request.Url and only handle requests you are interested in
 			if (request.Url.Contains(@"/kcs2/resources/bgm/"))
 			{
-				return new Cef_ResRequestHandler();
+				return new CustomResourceRequestHandler();
 			}
 			if (request.Url.Contains("gadget_html5"))
 				return new GadgetUrlHandler();
