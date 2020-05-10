@@ -241,7 +241,7 @@ namespace Browser
 			settings.CefCommandLineArgs.Add("num-raster-threads", "4");
 			settings.CefCommandLineArgs.Add("limit-fps", "60"); // fix for canvas crash if fps exceeds 60fps
 			settings.CefCommandLineArgs.Add("autoplay-policy", "no-user-gesture-required");
-			settings.CefCommandLineArgs.Add("disable-features", "HardwareMediaKeyHandling,MediaSessionService,AudioServiceOutOfProcess");
+			settings.CefCommandLineArgs.Add("disable-features", "HardwareMediaKeyHandling");
 			CefSharpSettings.SubprocessExitIfParentProcessClosed = true;
 			Cef.Initialize(settings, false, (IBrowserProcessHandler)null);
 			SetCookies();
