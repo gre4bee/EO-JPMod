@@ -160,6 +160,12 @@ namespace ElectronicObserver.Data
 		/// </summary>
 		public IDDictionary<RelocationData> RelocatedEquipments { get; private set; }
 
+		/// <summary>
+		/// 艦隊編成プリセットデータ
+		/// </summary>
+		public FleetPresetManager FleetPreset { get; private set; }
+
+
 
 		public ReplayManager Replays { get; private set; }
 
@@ -196,12 +202,12 @@ namespace ElectronicObserver.Data
 			BaseAirCorps = new IDDictionary<BaseAirCorpsData>();
 			RelocatedEquipments = new IDDictionary<RelocationData>();
 			Replays = new ReplayManager();
+			FleetPreset = new FleetPresetManager();
 		}
 
 
 		public void Load()
 		{
-
 			{
 				var temp = (ShipGroupManager)ShipGroup.Load();
 				if (temp != null)

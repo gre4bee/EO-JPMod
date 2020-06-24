@@ -1,4 +1,4 @@
-﻿using Codeplex.Data;
+﻿using DynaJson;
 using ElectronicObserver.Data;
 using ElectronicObserver.Notifier;
 using ElectronicObserver.Observer;
@@ -64,6 +64,7 @@ namespace ElectronicObserver.Window
         public FormWindowCapture fWindowCapture;
         public FormBaseAirCorps fBaseAirCorps;
         public FormJson fJson;
+		public FormFleetPreset fFleetPreset;
 
         #endregion
 
@@ -184,6 +185,7 @@ namespace ElectronicObserver.Window
             SubForms.Add(fWindowCapture = new FormWindowCapture(this));
             SubForms.Add(fBaseAirCorps = new FormBaseAirCorps(this));
             SubForms.Add(fJson = new FormJson(this));
+			SubForms.Add(fFleetPreset = new FormFleetPreset(this));
 
             ConfigurationChanged();     //設定から初期化
 
@@ -526,6 +528,8 @@ namespace ElectronicObserver.Window
                     return fBaseAirCorps;
                 case "Json":
                     return fJson;
+				case "FleetPreset":
+					return fFleetPreset;
                 default:
                     if (persistString.StartsWith("ShipGroup"))
                     {
@@ -909,7 +913,7 @@ namespace ElectronicObserver.Window
                         using (StreamReader sr = new StreamReader(ofd.FileName))
                         {
 
-                            dynamic json = DynamicJson.Parse(sr.ReadToEnd().Remove(0, 7));
+                            dynamic json = JsonObject.Parse(sr.ReadToEnd().Remove(0, 7));
 
                             foreach (dynamic elem in json.api_data.api_mst_ship)
                             {
@@ -962,7 +966,7 @@ namespace ElectronicObserver.Window
                         using (StreamReader sr = new StreamReader(ofd.FileName))
                         {
 
-                            dynamic json = DynamicJson.Parse(sr.ReadToEnd().Remove(0, 7));
+                            dynamic json = JsonObject.Parse(sr.ReadToEnd().Remove(0, 7));
 
                             foreach (dynamic elem in json.api_data.api_mst_ship)
                             {
@@ -1577,12 +1581,13 @@ namespace ElectronicObserver.Window
             ShowForm(fJson);
         }
 
-
-
+		private void StripMenu_View_FleetPreset_Click(object sender, EventArgs e)
+		{
+			ShowForm(fFleetPreset);
+		}
 
 
         #endregion
 
-       
     }
 }
