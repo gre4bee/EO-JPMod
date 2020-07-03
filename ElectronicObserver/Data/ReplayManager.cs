@@ -85,7 +85,7 @@ namespace ElectronicObserver.Data
 					YasenData = data;
 					break;
 
-				case "api_req_battle_midnight/sp_midnight": // night node
+				case "api_req_battle_midnight/sp_midnight": // night node (single)
 					DayData = data;
 					break;
 
@@ -110,11 +110,11 @@ namespace ElectronicObserver.Data
 					DayData = data;
 					break;
 
-				case "api_req_combined_battle/midnight_battle": // combined day to night					
+				case "api_req_combined_battle/midnight_battle": // combined normal day to night					
 					YasenData = data;
 					break;
 
-				case "api_req_combined_battle/sp_midnight":// combined night battle
+				case "api_req_combined_battle/sp_midnight":// combined night battle (combined night only)
 					DayData = data;
 					break;
 
@@ -135,7 +135,7 @@ namespace ElectronicObserver.Data
 					break;
 
 				case "api_req_combined_battle/ec_midnight_battle": // combined night battle
-					DayData = data;
+					YasenData = data;
 					break;
 
 				case "api_req_combined_battle/ec_night_to_day": // enemy combined night to day
